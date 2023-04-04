@@ -9,8 +9,7 @@ inputs:
 outputs:
   num_squared:
     description: 'Square of the input'
-    value: ${{ steps.get-square.output.num_squared }}
-    
+    value: ${{ steps.get-square.output.num_squared }}    
 runs:
   using: 'composite'
   steps:
@@ -22,10 +21,10 @@ runs:
       run: pip install -r requirements.txt
       shell: bash
     - name: Pass Inputs to Shell
-    run: |
-      echo "INPUT_NUM=${{ inputs.num}}" >> $GITHUB_ENV
-    shell: bash
-   - name: Fetch the number's square
-   id: get-square
-   run: python src/get_num_squre.py
-   shell: bash 
+      run: |
+        echo "INPUT_NUM=${{ inputs.num}}" >> $GITHUB_ENV
+      shell: bash
+    - name: Fetch the number's square
+      id: get-square
+      run: python src/get_num_squre.py
+      shell: bash 
